@@ -31,17 +31,11 @@ export const CountrySelector = ({ onCountrySelect }: CountrySelectorProps) => {
           </SelectTrigger>
           <SelectContent className="bg-card border-border">
             <SelectItem value="united-states" className="h-12">
-              United States
-            </SelectItem>
-            <SelectItem value="canada" className="h-12">
-              Canada
-            </SelectItem>
-            <SelectItem value="australia" className="h-12">
-              Australia
-            </SelectItem>
-            <SelectItem value="united-kingdom" className="h-12">
               United Kingdom
             </SelectItem>
+            <SelectItem value="canada" className="h-12">
+              Australia
+            </SelectItem>      
           </SelectContent>
         </Select>
       </div>
