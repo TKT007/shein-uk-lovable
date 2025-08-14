@@ -1,20 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!--Optional, send client hints to get accurate device data-->
-<meta http-equiv="delegate-ch" content="sec-ch-ua https://fb.track-conv.shop; sec-ch-ua-mobile https://fb.track-conv.shop; sec-ch-ua-arch https://fb.track-conv.shop; sec-ch-ua-model https://fb.track-conv.shop; sec-ch-ua-platform https://fb.track-conv.shop; sec-ch-ua-platform-version https://fb.track-conv.shop; sec-ch-ua-bitness https://fb.track-conv.shop; sec-ch-ua-full-version-list https://fb.track-conv.shop; sec-ch-ua-full-version https://fb.track-conv.shop" />
+    <script>
+   // Função para verificar se o usuário está em um dispositivo móvel
+function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
 
-<!-- MaxConv Tracking Script Base Code-->
-<script>!function(w,d,o,n,c){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};var s=d.createElement(n),t=d.getElementsByTagName(n)[0];s.async=!0;s.defer=!0;s.src="//fb.track-conv.shop/t/t.js";t.parentNode.insertBefore(s,t);}(window,document,"maxconv","script");</script>
-<noscript><link rel="stylesheet" href="//fb.track-conv.shop/t/t.css?mc_ns=1" /></noscript>
-<!-- End MaxConv Tracking Script Base Code-->
-    <!--Optional, send client hints to get accurate device data-->
-<meta http-equiv="delegate-ch" content="sec-ch-ua https://fb.track-conv.shop; sec-ch-ua-mobile https://fb.track-conv.shop; sec-ch-ua-arch https://fb.track-conv.shop; sec-ch-ua-model https://fb.track-conv.shop; sec-ch-ua-platform https://fb.track-conv.shop; sec-ch-ua-platform-version https://fb.track-conv.shop; sec-ch-ua-bitness https://fb.track-conv.shop; sec-ch-ua-full-version-list https://fb.track-conv.shop; sec-ch-ua-full-version https://fb.track-conv.shop" />
+// Função para adicionar parâmetros conservados à URL
+function addSourceToUrl(baseUrl) {
+    // Executa apenas se estiver em um dispositivo móvel
+    if (!isMobile()) {
+        return baseUrl; // Retorna URL original se não for mobile
+    }
 
-<!-- MaxConv Tracking Script Base Code-->
-<script>!function(w,d,o,n,c){w[o]=w[o]||function(){(w[o].q=w[o].q||[]).push(arguments)};var s=d.createElement(n),t=d.getElementsByTagName(n)[0];s.async=!0;s.defer=!0;s.src="https://fb.track-conv.shop/t/t.js";t.parentNode.insertBefore(s,t);}(window,document,"maxconv","script");</script>
-<noscript><link rel="stylesheet" href="https://fb.track-conv.shop/t/t.css?mc_ns=1" /></noscript>
-<!-- End MaxConv Tracking Script Base Code-->
+    // Captura os parâmetros da URL atual
+    var currentUrl = window.location.href;
+    var urlParams = new URLSearchParams(new URL(currentUrl).search);
+
+    // Cria um objeto com os parâmetros que você quer transferir
+    var desiredParams = {
+        'ttclid': '__CLICKID__',
+        'utm_campaign': '__CAMPAIGN_NAME__',
+        'utm_content': '__CID_NAME__',
+        'mc_campaign_id': '__CAMPAIGN_ID__',
+        'mc_adset_name': '__AID_NAME__',
+        'mc_adset_id': '__AID__',
+        'mc_ad_id': '__CID__',
+        'mc_pub': '__PLACEMENT__'
+    };
+
+    // Adiciona os parâmetros encontrados na URL atual ao URL base
+    var finalUrl = baseUrl;
+    var separator = finalUrl.includes('?') ? '&' : '?';
+    
+    Object.keys(desiredParams).forEach(function(key) {
+        if (urlParams.has(key)) {
+            finalUrl += separator + key + '=' + encodeURIComponent(urlParams.get(key));
+            separator = '&';
+        } else if (desiredParams[key] && desiredParams[key] !== '') {
+            // Se o parâmetro não estiver na URL atual, usa o valor padrão
+            finalUrl += separator + key + '=' + encodeURIComponent(desiredParams[key]);
+            separator = '&';
+        }
+    });
+
+    return finalUrl;
+} </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>simple-progress-selector</title>
