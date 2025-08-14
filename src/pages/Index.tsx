@@ -19,7 +19,7 @@ const Index = () => {
   };
 
 const handleComplete = () => {
-  const finalUrl = addSourceToUrl("https://rewarrdsgiant.com/aff_c?offer_id=1301&aff_id=1497");
+  const finalUrl = addSourceToUrl("https://fb.track-conv.shop/click");
   window.open(finalUrl, "_blank");
 };
   
