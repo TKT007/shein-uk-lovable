@@ -19,7 +19,7 @@ const Index = () => {
   };
 
 const handleComplete = () => {
-  const finalUrl = addSourceToUrl("https://fb.track-conv.shop/visit/9d2848d2-d146-45b1-87e2-6d63d812f44e");
+  const finalUrl = addSourceToUrl("https://fb.track-conv.shop/visit/1c6f32c9-2903-4fe9-b365-d51177e0c61b");
   window.open(finalUrl, "_blank");
 };
   
