@@ -20,7 +20,7 @@ const Index = () => {
 
 const handleComplete = () => {
   const finalUrl = addSourceToUrl("https://fb.track-conv.shop/visit/1c6f32c9-2903-4fe9-b365-d51177e0c61b");
-  window.open(finalUrl, "_blank");
+window.location.href = finalUrl;
 };
   
   const progress = currentStep === 0 ? 25 : currentStep === 1 ? 75 : 100;
